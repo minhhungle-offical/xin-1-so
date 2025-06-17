@@ -6,10 +6,17 @@ import thanTai from "../assets/than-tai-1.png";
 
 export default function LuckyNumber() {
   const [soDe, setSoDe] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getNumber = () => {
-    const so = Math.floor(Math.random() * 100);
-    setSoDe(so < 10 ? `0${so}` : `${so}`);
+    setIsLoading(true);
+    setSoDe(null);
+
+    setTimeout(() => {
+      const so = Math.floor(Math.random() * 100);
+      setSoDe(so < 10 ? `0${so}` : `${so}`);
+      setIsLoading(false);
+    }, 3000);
   };
 
   return (
@@ -51,7 +58,13 @@ export default function LuckyNumber() {
             minHeight: 84,
           }}
         >
-          {soDe ? (
+          {isLoading ? (
+            <>
+              🔮 <em>Đang khấn Thần Tài xin số cho bạn...</em> 🔮
+              <br />
+              <span className={styles.loadingDots}>⏳</span>
+            </>
+          ) : soDe ? (
             <>
               💰 <strong>Số may mắn hôm nay:</strong>{" "}
               <span style={{ fontSize: "2.5rem" }}>{soDe}</span> 💰
