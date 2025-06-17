@@ -1,0 +1,139 @@
+.container {
+  height: 100vh;
+  background: radial-gradient(circle at center, #2a0033 0%, #000000 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  max-width: 300px;
+  filter: drop-shadow(0 0 25px gold);
+  animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.description {
+  color: #ffeb99;
+  text-shadow: 0 0 6px #ffcc00;
+  font-style: italic;
+  text-align: center;
+}
+
+.smoke {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  /* background: url("https://i.ibb.co/KzN3PgZ/smoke.gif") center bottom no-repeat; */
+  background-size: cover;
+  opacity: 0.4;
+  pointer-events: none;
+  animation: riseSmoke 8s infinite linear;
+}
+
+@keyframes riseSmoke {
+  0% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0.4;
+  }
+}
+
+.incenseHolderContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.incenseHolder {
+  width: 100px;
+  height: 50px;
+  background: #5e4a2d;
+  border-radius: 50% 50% 10% 10%;
+  position: relative;
+  box-shadow: 0 0 10px #e0c084;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding-bottom: 10px;
+}
+
+.incense {
+  width: 6px;
+  height: 70px;
+  background: linear-gradient(to bottom, #ff0000, #990000);
+  position: relative;
+  border-radius: 2px;
+}
+
+.incense::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -8px;
+  width: 20px;
+  height: 40px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    transparent 70%
+  );
+  animation: incenseSmoke 3s infinite ease-in-out;
+  opacity: 0.5;
+  border-radius: 50%;
+  transform: rotate(-10deg);
+  pointer-events: none;
+  filter: blur(3px);
+}
+
+@keyframes incenseSmoke {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-15px) scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-30px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.offeringRow {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  z-index: 2;
+}
